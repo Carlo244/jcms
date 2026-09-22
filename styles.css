@@ -160,19 +160,22 @@
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
-        min-height: 46px;
-        padding: 0.8rem 1rem;
+        min-height: 48px;
+        padding: 0.9rem 1.4rem;
         text-decoration: none;
-        border: 1px solid var(--ink);
+        border: 1.5px solid var(--ink);
         background: transparent;
         color: var(--ink);
-        transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+        transition: all 200ms ease;
         cursor: pointer;
-        border-radius: 3px;
+        border-radius: 4px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
     }
 
     .button:hover {
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(23, 27, 34, 0.12);
     }
 
     .button:focus-visible {
@@ -183,11 +186,14 @@
     .button.primary {
         background: var(--ink);
         color: #f7f2e8;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(23, 27, 34, 0.1);
     }
 
     .button.primary:hover {
         background: var(--accent);
         border-color: var(--accent);
+        box-shadow: 0 6px 20px rgba(44, 79, 122, 0.2);
     }
 
     .button.primary:focus-visible {
@@ -195,8 +201,15 @@
         outline-offset: 2px;
     }
 
+    .button.ghost {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
     .button.ghost:hover {
-        background: rgba(23, 27, 34, 0.05);
+        background: rgba(44, 79, 122, 0.06);
+        border-color: var(--accent);
+        box-shadow: 0 4px 12px rgba(44, 79, 122, 0.08);
     }
 
     header {
@@ -373,6 +386,15 @@
         border: 1px solid rgba(23, 27, 34, 0.16);
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04));
         padding: clamp(1rem, 2.6vw, 1.6rem);
+        border-radius: 8px;
+        transition: all 200ms ease;
+    }
+
+    .hero-copy:hover ~ .hero-visual,
+    .hero-visual:hover {
+        border-color: rgba(44, 79, 122, 0.2);
+        box-shadow: 0 4px 16px rgba(44, 79, 122, 0.08);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08));
     }
 
     .visual-header,
@@ -461,11 +483,20 @@
         display: inline-flex;
         align-items: center;
         min-height: 2rem;
-        padding: 0.25rem 0.5rem;
-        border: 1px solid rgba(23, 27, 34, 0.15);
-        background: rgba(255, 255, 255, 0.15);
+        padding: 0.35rem 0.7rem;
+        border: 1.5px solid rgba(44, 79, 122, 0.25);
+        background: rgba(44, 79, 122, 0.04);
         color: var(--ink);
         text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.87rem;
+        transition: all 150ms ease;
+    }
+
+    .link-chip:hover {
+        background: rgba(44, 79, 122, 0.08);
+        border-color: rgba(44, 79, 122, 0.4);
+        transform: translateY(-1px);
     }
 
     .section-grid {
@@ -553,12 +584,32 @@
         grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
         gap: clamp(1.6rem, 5vw, 4rem);
         align-items: start;
+        padding: clamp(1.5rem, 3vw, 2rem);
+        border: 1px solid rgba(23, 27, 34, 0.12);
+        border-radius: 8px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+        transition: all 250ms ease;
+    }
+
+    .project-layout:hover {
+        border-color: rgba(44, 79, 122, 0.25);
+        box-shadow: 0 8px 24px rgba(44, 79, 122, 0.1);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+        transform: translateY(-2px);
     }
 
     .project-stage {
         padding: clamp(1.1rem, 2.5vw, 1.5rem);
         border: 1px solid rgba(23, 27, 34, 0.18);
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.03));
+        border-radius: 6px;
+        transition: all 200ms ease;
+    }
+
+    .project-layout:hover .project-stage {
+        border-color: rgba(44, 79, 122, 0.35);
+        box-shadow: 0 4px 12px rgba(44, 79, 122, 0.08);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08));
     }
 
     .project-number {
@@ -617,8 +668,16 @@
         position: sticky;
         top: 5.5rem;
         border: 1px solid rgba(23, 27, 34, 0.14);
-        padding: 1.15rem;
+        padding: 1.4rem;
         background: rgba(255, 255, 255, 0.16);
+        border-radius: 6px;
+        transition: all 200ms ease;
+    }
+
+    .project-layout:hover .project-aside {
+        background: rgba(255, 255, 255, 0.22);
+        border-color: rgba(44, 79, 122, 0.2);
+        box-shadow: 0 2px 8px rgba(44, 79, 122, 0.05);
     }
 
     .project-aside dl {
@@ -882,7 +941,7 @@
     .js [data-reveal] {
         opacity: 1;
         transform: none;
-        transition: opacity 500ms ease, transform 500ms ease;
+        transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     @media (max-width: 1080px) {
